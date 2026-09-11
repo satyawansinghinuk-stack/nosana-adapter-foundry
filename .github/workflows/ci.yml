@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run test suite
+        run: npm test
+
+      # gate1:validate-job is intentionally not run in CI. The installed
+      # @nosana/cli performs a live network call to the npm registry on every
+      # invocation (node_modules/@nosana/cli/dist/src/services/versions.js) to
+      # check for a required update, and can exit non-zero for that reason
+      # alone, independent of whether the job definition itself is valid. See
+      # docs/nosana-cli-findings.md for the full source citation. Validate the
+      # job definition locally with `npm run gate1:validate-job` before
+      # merging a change to it.

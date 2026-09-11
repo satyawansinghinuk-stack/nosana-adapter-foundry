@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.package-lock.json
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.key
+wallet/
+*.pem
+
+# Generated evidence. One canonical example is tracked on purpose;
+# every timestamped run generated locally is not.
+evidence/*.json
+!evidence/gate1-simulation.json
+
+# Build and test artifacts
+work/
+coverage/
+*.tsbuildinfo
+
+# npm
+npm-debug.log*
+.npm/
+
+# OS and editor files
+.DS_Store
+*.swp

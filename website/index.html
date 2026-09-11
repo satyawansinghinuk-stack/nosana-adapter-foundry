@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nosana Adapter Foundry is an open-source verification layer for reproducible AI workloads on decentralized GPU infrastructure." />
+    <meta property="og:title" content="Nosana Adapter Foundry" />
+    <meta property="og:description" content="Verified, reproducible AI workloads for decentralized GPU infrastructure." />
+    <meta property="og:type" content="website" />
+    <!--
+      og:url and absolute og:image / twitter:image URLs are intentionally omitted.
+      This site has not been deployed yet, so there is no final URL to publish.
+      Once a Vercel URL exists, add:
+        <meta property="og:url" content="https://<deployment-url>/" />
+      and change the two image "content" values below from "og.png" to
+      "https://<deployment-url>/og.png". Relative paths work for same-origin
+      previews but are not guaranteed by every crawler.
+    -->
+    <meta property="og:image" content="og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nosana Adapter Foundry: deterministic verification for AI workloads on decentralized GPUs" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nosana Adapter Foundry" />
+    <meta name="twitter:description" content="Verified, reproducible AI workloads for decentralized GPU infrastructure." />
+    <meta name="twitter:image" content="og.png" />
+    <meta name="theme-color" content="#07110d" />
+    <title>Nosana Adapter Foundry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="premium.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="nav shell">
+      <a class="brand" href="#top" aria-label="Nosana Adapter Foundry home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>ADAPTER FOUNDRY</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#proof">Proof</a>
+        <a href="#inspector">Inspector</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#team">Team</a>
+      </nav>
+      <a class="nav-cta" data-github data-live-label="View source" href="#repository"><span class="link-label">View source</span><span class="link-arrow"></span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <div class="status-row">
+            <p class="eyebrow"><span></span> Nosana grant proposal</p>
+            <p class="status-chip">35/35 LOCAL TESTS PASSING</p>
+          </div>
+          <h1>AI workloads that<br /><em>prove what happened.</em></h1>
+          <p class="lede">Package, run, retrieve, and independently verify AI workloads across decentralized GPU providers. No hand-waving. No simulation presented as production.</p>
+          <aside class="hero-status" aria-label="Current prototype status">
+            <strong>PROTOTYPE STATUS</strong>
+            <span>Local verification is working. Live artifact retrieval remains pending until Nosana’s supported egress path for custom jobs is confirmed.</span>
+          </aside>
+          <div class="hero-actions">
+            <a class="button primary" data-github data-live-label="Explore the prototype" href="#repository"><span class="link-label">Explore the prototype</span> <span class="link-arrow">↓</span></a>
+            <a class="button quiet" href="#architecture">See how it works <span>↓</span></a>
+          </div>
+        </div>
+
+        <div class="terminal-card" aria-label="Example verification output">
+          <div class="terminal-head">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span>gate-1 / verification</span>
+            <span class="live-dot">LOCAL</span>
+          </div>
+          <div class="terminal-body">
+            <p><b>$</b> npm test</p>
+            <p class="muted">running deterministic verification suite...</p>
+            <div class="rule"></div>
+            <p><span class="check">✓</span> artifact bytes <strong>10,485,760</strong></p>
+            <p><span class="check">✓</span> streaming SHA-256 <strong>match</strong></p>
+            <p><span class="check">✓</span> job definition <strong>valid</strong></p>
+            <p><span class="check">✓</span> safety boundary <strong>enforced</strong></p>
+            <div class="rule"></div>
+            <p class="result"><span>35 tests passed</span><span>simulation ≠ live</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell inspector-section" id="inspector">
+        <div class="section-heading row-heading">
+          <div><p class="section-tag">DETERMINISM INSPECTOR</p><h2>Change one byte.<br />Watch the proof change.</h2></div>
+          <p>This browser demonstration computes a real SHA-256 digest locally. It demonstrates deterministic hashing only. It does not execute a Nosana job.</p>
+        </div>
+        <div class="inspector">
+          <div class="inspector-input">
+            <div class="panel-label"><span>01</span> INPUT PAYLOAD</div>
+            <div class="preset-row" role="group" aria-label="Example payloads">
+              <button class="preset active" type="button" data-payload='{"workload":"artifact-roundtrip","seed":"nosana-gate1-public-v1","bytes":10485760}'>Gate 1</button>
+              <button class="preset" type="button" data-payload='{"workload":"inference","model":"open-model","precision":"fp16"}'>Inference</button>
+              <button class="preset" type="button" data-payload='{"workload":"evaluation","dataset":"public-fixture","seed":42}'>Evaluation</button>
+            </div>
+            <label for="workload-input">Payload</label>
+            <textarea id="workload-input" spellcheck="false">{"workload":"artifact-roundtrip","seed":"nosana-gate1-public-v1","bytes":10485760}</textarea>
+            <p class="input-note">Processed locally in your browser. Nothing is submitted.</p>
+          </div>
+          <div class="inspector-output">
+            <div class="panel-label"><span>02</span> COMPUTED EVIDENCE</div>
+            <div class="hash-head"><span>SHA-256</span><button id="copy-hash" type="button" aria-label="Copy computed SHA-256 digest">COPY</button></div>
+            <output id="computed-hash" aria-live="polite">Computing...</output>
+            <pre id="evidence-preview" aria-label="Browser demonstration evidence"></pre>
+            <div class="inspector-verdict"><i></i><span>DETERMINISTIC DIGEST COMPUTED</span><small>BROWSER DEMONSTRATION</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-strip" id="proof">
+        <div class="shell proof-grid">
+          <div><strong>35/35</strong><span>automated tests passing</span></div>
+          <div><strong>10 MiB</strong><span>deterministic test artifact</span></div>
+          <div><strong>SHA-256</strong><span>independent integrity check</span></div>
+          <div><strong>0</strong><span>false live claims</span></div>
+        </div>
+      </section>
+
+      <section class="section shell problem-grid">
+        <div>
+          <p class="section-tag">THE PROBLEM</p>
+          <h2>“Container exited” is not the same as “workload succeeded.”</h2>
+        </div>
+        <div class="problem-copy">
+          <p>Distributed compute introduces boundaries that ordinary success logs cannot verify. Did the intended workload execute? Did its output survive retrieval? Can another developer reproduce it?</p>
+          <p>Adapter Foundry turns those questions into explicit, testable gates.</p>
+        </div>
+      </section>
+
+      <section class="section shell" id="architecture">
+        <div class="section-heading">
+          <p class="section-tag">VERIFICATION PIPELINE</p>
+          <h2>Evidence at every boundary.</h2>
+          <p>A workload only advances when the previous claim has been measured.</p>
+        </div>
+        <div class="pipeline">
+          <article class="pipeline-step" data-reveal><span>01</span><div class="icon">{ }</div><h3>Package</h3><p>Pin the workload, inputs, runtime, and expected output contract.</p></article>
+          <div class="connector">→</div>
+          <article class="pipeline-step" data-reveal><span>02</span><div class="icon">GPU</div><h3>Execute</h3><p>Translate the workload into a Nosana-compatible GPU job.</p></article>
+          <div class="connector">→</div>
+          <article class="pipeline-step pending" data-reveal><span>03</span><div class="icon">OUT</div><h3>Retrieve</h3><p>Recover the generated artifact through a supported egress path.</p></article>
+          <div class="connector">→</div>
+          <article class="pipeline-step pending" data-reveal><span>04</span><div class="icon">#</div><h3>Verify</h3><p>Compare bytes and emit a machine-readable evidence record.</p></article>
+        </div>
+      </section>
+
+      <section class="section dark-panel">
+        <div class="shell honesty-grid">
+          <div>
+            <p class="section-tag">HONEST BY DESIGN</p>
+            <h2>The prototype refuses to overclaim.</h2>
+          </div>
+          <div class="evidence-card">
+            <div class="evidence-line"><span>executionMode</span><code>"simulation"</code></div>
+            <div class="evidence-line"><span>hashMatch</span><code class="green">true</code></div>
+            <div class="evidence-line"><span>gatePassed</span><code class="red">false</code></div>
+            <div class="evidence-line"><span>failureReason</span><code>"simulation_is_not_live_evidence"</code></div>
+          </div>
+          <div class="disclosure">
+            <strong>Current integration boundary</strong>
+            <p>The deterministic verification core is working locally. A live Gate 1 remains intentionally blocked until Nosana’s supported artifact-egress mechanism for custom jobs is confirmed and tested.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell" id="roadmap">
+        <div class="section-heading row-heading">
+          <div><p class="section-tag">GRANT ROADMAP</p><h2>From one proof to an ecosystem.</h2></div>
+          <p>Four bounded milestones turn the verification core into reusable public infrastructure.</p>
+        </div>
+        <ol class="roadmap">
+          <li class="complete" data-reveal><span>01</span><div><small>LOCAL FOUNDATION</small><h3>Deterministic verification core</h3><p>Generate, stream-hash, compare, validate evidence, and prevent simulated results from passing the live gate.</p></div><b>COMPLETE</b></li>
+          <li class="active" data-reveal><span>02</span><div><small>GRANT TARGET</small><h3>Live Nosana artifact round trip</h3><p>Confirm supported egress, execute on Nosana, retrieve, hash, and publish evidence.</p></div><b>IN PROGRESS</b></li>
+          <li data-reveal><span>03</span><div><small>GPU WORKLOADS</small><h3>Inference, evaluation, and fine-tuning</h3><p>Add bounded GPU adapters with explicit integrity and reproducibility checks.</p></div></li>
+          <li data-reveal><span>04</span><div><small>ECOSYSTEM</small><h3>Public developer release</h3><p>Ship stable tooling, examples, technical reports, and onboarding documentation.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="section team-section" id="team">
+        <div class="shell">
+          <div class="section-heading row-heading">
+            <div><p class="section-tag">TEAM AND DELIVERY</p><h2>Three accountable workstreams.</h2></div>
+            <p>Engineering delivery, security review, and automated quality gates have named owners.</p>
+          </div>
+          <div class="team-grid">
+            <article class="team-member" data-reveal>
+              <span>01</span><small>PROJECT LEAD AND ENGINEERING</small>
+              <h3>Satyawan Singh</h3>
+              <p>Owns architecture, implementation, Nosana integration, AI workload adapters, and technical documentation.</p>
+            </article>
+            <article class="team-member" data-reveal>
+              <span>02</span><small>CYBERSECURITY</small>
+              <h3>Naina</h3>
+              <p>Reviews threat boundaries, secret handling, public job definitions, dependency exposure, and evidence integrity.</p>
+            </article>
+            <article class="team-member" data-reveal>
+              <span>03</span><small>QA AUTOMATION</small>
+              <h3>Naveen Chirumamilla</h3>
+              <p>Owns test planning, automated regression coverage, acceptance-gate validation, and reproducibility testing.</p>
+            </article>
+          </div>
+          <p class="team-operating-model"><strong>Operating model</strong> Each milestone passes through implementation, security review, and independently defined QA acceptance criteria before evidence is published.</p>
+        </div>
+      </section>
+
+      <section class="section shell" id="repository">
+        <div class="cta-panel">
+          <p class="section-tag">BUILD IN PUBLIC</p>
+          <h2>Make decentralized AI compute measurable.</h2>
+          <p>The prototype is being prepared as an open-source reference implementation for the Nosana ecosystem.</p>
+          <div class="hero-actions">
+            <a class="button primary disabled" data-github data-live-label="View source" href="#repository" aria-disabled="true"><span class="link-label">Repository coming soon</span><span class="link-arrow"></span></a>
+            <a class="button quiet" href="mailto:satyawansinghinuk@gmail.com">Contact the team <span>↗</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <div class="brand"><span class="brand-mark"><i></i><i></i><i></i></span><span>ADAPTER FOUNDRY</span></div>
+      <p>Built for reproducible AI workloads on decentralized GPU infrastructure.</p>
+      <p>Prototype · 2026</p>
+    </footer>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

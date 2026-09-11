@@ -1,0 +1,21 @@
+{
+  "version": "0.1",
+  "type": "container",
+  "meta": { "trigger": "cli" },
+  "ops": [
+    {
+      "type": "container/run",
+      "id": "gate1-artifact-roundtrip",
+      "args": {
+        "image": "REPLACE_WITH_DIGEST_PINNED_IMAGE",
+        "cmd": [],
+        "gpu": true,
+        "env": {
+          "ARTIFACT_PUBLIC_SEED": "nosana-gate1-public-v1",
+          "ARTIFACT_SIZE_BYTES": "10485760",
+          "ARTIFACT_OUTPUT_PATH": "/nosana/outputs/artifact.bin"
+        }
+      }
+    }
+  ]
+}

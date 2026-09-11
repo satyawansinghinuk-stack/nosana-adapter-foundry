@@ -1,0 +1,24 @@
+{
+  "name": "nosana-adapter-foundry",
+  "version": "0.1.0",
+  "description": "Gate 1 prototype for verifying deterministic artifact round trips on the Nosana GPU network, with a strict simulation versus live evidence boundary.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satyawansinghinuk-stack/nosana-adapter-foundry.git"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "gate1:simulate": "node src/cli/gate1.ts --simulate",
+    "gate1:validate-job": "nosana job validate src/nosana/job-definitions/gate1-artifact-roundtrip.job.json",
+    "gate1:live-dry-run": "node src/cli/gate1-live-dry-run.ts"
+  },
+  "engines": {
+    "node": ">=22.6"
+  },
+  "devDependencies": {
+    "@nosana/cli": "^1.0.133"
+  }
+}

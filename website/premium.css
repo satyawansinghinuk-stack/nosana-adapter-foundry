@@ -1,0 +1,51 @@
+/* Functional interaction and grant-status layer */
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid #579e22;outline-offset:4px}
+.button.primary .link-label{color:#fff}
+.nav-cta .link-label{color:inherit}
+.link-arrow:empty{display:none}
+.status-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.status-row p{margin-bottom:0}
+.status-chip{font:500 9px var(--mono);letter-spacing:.08em;border:1px solid #6ea54c;background:#dff7ce;padding:7px 9px}
+.hero-status{display:grid;grid-template-columns:auto 1fr;gap:18px;margin-top:26px;padding:15px 18px;border:1px solid #c1902f;background:#fff3d6;font-size:12px;line-height:1.55}
+.hero-status strong{font:500 9px var(--mono);letter-spacing:.08em;color:#8b5d00;padding-top:2px}.hero-status span{color:#605641}
+.inspector-section{border-top:1px solid var(--line)}
+.inspector{display:grid;grid-template-columns:1fr 1fr;background:#07110d;color:#e7eee8;border:1px solid #20332a;box-shadow:18px 20px 0 #d5dbd1}
+.inspector-input,.inspector-output{padding:32px}.inspector-input{border-right:1px solid #26392f}
+.panel-label{display:flex;gap:12px;font:500 10px var(--mono);letter-spacing:.1em;color:#819087;margin-bottom:30px}.panel-label span{color:#98f23d}
+.preset-row{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.preset,.hash-head button{appearance:none;border:1px solid #31443a;background:transparent;color:#aeb9b1;padding:8px 11px;font:10px var(--mono);cursor:pointer}
+.preset:hover,.preset.active{border-color:#98f23d;color:#98f23d;background:rgba(152,242,61,.06)}
+.inspector label{display:block;font:10px var(--mono);color:#819087;margin-bottom:8px}
+.inspector textarea{width:100%;min-height:150px;resize:vertical;background:#0c1812;border:1px solid #31443a;color:#fff;padding:18px;font:12px/1.7 var(--mono)}
+.input-note{font:9px var(--mono);color:#728279;margin:10px 0 0}.hash-head{display:flex;align-items:center;justify-content:space-between;font:10px var(--mono);color:#819087}
+.hash-head button:hover{border-color:#98f23d;color:#98f23d}
+#computed-hash{display:block;min-height:78px;padding:18px 0;color:#98f23d;font:12px/1.7 var(--mono);overflow-wrap:anywhere;border-bottom:1px solid #26392f}
+#evidence-preview{min-height:170px;margin:0;padding:22px 0;color:#bdc8c0;font:11px/1.65 var(--mono);white-space:pre-wrap}
+.inspector-verdict{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;border-top:1px solid #26392f;padding-top:18px;font:9px var(--mono);letter-spacing:.07em;color:#98f23d}
+.inspector-verdict i{width:7px;height:7px;background:#98f23d;border-radius:50%}.inspector-verdict small{color:#d9a540;font:inherit}
+.pipeline-step{transition:border-color .18s ease,background-color .18s ease,transform .18s ease}.pipeline-step:hover{border-color:#75b84b;background:#f5f8f1;transform:translateY(-3px)}
+.pipeline-step.pending .icon{color:#b07b16}.pipeline-step.pending:after{content:"LIVE PATH PENDING";position:absolute;right:16px;top:16px;font:8px var(--mono);letter-spacing:.06em;color:#9b6b13}
+.roadmap .complete{background:#e6f8d8}.roadmap .complete b{background:#102019;color:#98f23d}
+.hero-copy>*{animation:enter .6s cubic-bezier(.2,.8,.2,1) both}.hero-copy>*:nth-child(2){animation-delay:.06s}.hero-copy>*:nth-child(3){animation-delay:.12s}.hero-copy>*:nth-child(4){animation-delay:.18s}.hero-copy>*:nth-child(5){animation-delay:.24s}
+@keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.inspector{grid-template-columns:1fr}.inspector-input{border-right:0;border-bottom:1px solid #26392f}}
+@media(max-width:600px){.hero-status{grid-template-columns:1fr;gap:8px}.inspector{box-shadow:8px 10px 0 #d5dbd1}.inspector-input,.inspector-output{padding:22px}.preset{flex:1}.inspector-verdict{grid-template-columns:auto 1fr}.inspector-verdict small{grid-column:2}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Scroll reveal: content is fully visible by default. JS adds .reveal-pending
+   only after it has confirmed it can also add .is-visible later, so a user
+   with JavaScript disabled never sees hidden content. */
+[data-reveal].reveal-pending{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease;transition-delay:var(--reveal-delay,0ms)}
+[data-reveal].reveal-pending.is-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){[data-reveal].reveal-pending{opacity:1;transform:none}}
+
+/* Touch targets: keep interactive controls comfortably tappable on mobile. */
+@media(max-width:600px){.preset,.hash-head button{padding:11px 13px;min-height:40px}}
+
+/* Named delivery owners */
+.team-section{background:#dfe5da;border-block:1px solid var(--line)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.team-member{min-height:270px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;background:rgba(255,255,255,.2)}
+.team-member>span{font:10px var(--mono);color:#66766c}.team-member small{display:block;margin-top:42px;font:9px var(--mono);letter-spacing:.08em;color:#477832}
+.team-member h3{margin:12px 0 18px;font-size:23px;letter-spacing:-.025em}.team-member p{color:#536159;font-size:13px;line-height:1.65;max-width:310px}
+.team-operating-model{max-width:830px;margin:32px 0 0;color:#536159;line-height:1.7}.team-operating-model strong{color:var(--ink);margin-right:12px;font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:800px){.team-grid{grid-template-columns:1fr}.team-member{min-height:auto}.team-member small{margin-top:28px}}
