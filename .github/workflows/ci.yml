@@ -19,6 +19,16 @@ jobs:
         with:
           node-version: "22"
 
+      # package-lock.json was generated with npm 11.12.1. The npm bundled
+      # with actions/setup-node's Node 22 image can be an older minor that
+      # fails `npm ci` with EBADPLATFORM on this lockfile's cross-platform
+      # optionalDependencies entries (e.g. @esbuild/aix-ppc64), even though
+      # those entries are correctly platform-restricted and are never
+      # installed. Pinning npm avoids that mismatch without changing the
+      # lockfile itself.
+      - name: Use a matching npm version
+        run: npm install -g npm@11.12.1
+
       - name: Install dependencies
         run: npm ci
 
