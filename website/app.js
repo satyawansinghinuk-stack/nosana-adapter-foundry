@@ -1,5 +1,4 @@
-// Set this after the public repository is created.
-const GITHUB_URL = "";
+const GITHUB_URL = "https://github.com/satyawansinghinuk-stack/nosana-adapter-foundry";
 
 // --- Pure logic -------------------------------------------------------
 // Exported so the same functions this page runs in the browser can be
