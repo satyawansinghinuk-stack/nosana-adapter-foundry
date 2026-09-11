@@ -11,6 +11,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test test/*.test.ts",
+    "website:check": "node scripts/validate-website.mjs",
     "gate1:simulate": "node src/cli/gate1.ts --simulate",
     "gate1:validate-job": "nosana job validate src/nosana/job-definitions/gate1-artifact-roundtrip.job.json",
     "gate1:live-dry-run": "node src/cli/gate1-live-dry-run.ts"

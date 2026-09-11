@@ -12,6 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -34,6 +35,17 @@ jobs:
 
       - name: Run test suite
         run: npm test
+
+      - name: Validate public website
+        run: npm run website:check
+
+      - name: Verify simulation stays non-live
+        run: |
+          output="$(npm run --silent gate1:simulate)"
+          printf '%s\n' "$output"
+          printf '%s\n' "$output" | grep -q '"hashMatch": true'
+          printf '%s\n' "$output" | grep -q '"gatePassed": false'
+          printf '%s\n' "$output" | grep -q '"executionMode": "simulation"'
 
       # gate1:validate-job is intentionally not run in CI. The installed
       # @nosana/cli performs a live network call to the npm registry on every
