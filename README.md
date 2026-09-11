@@ -3,6 +3,8 @@
 ![CI](https://github.com/satyawansinghinuk-stack/nosana-adapter-foundry/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)
 
+Project website: https://nosana-adapter-foundry.vercel.app/
+
 Nosana Adapter Foundry is an open prototype for turning a small dataset into a
 verified, versioned training and inference workload on the Nosana GPU
 network. This repository contains Gate 1: a small, self-contained check of
